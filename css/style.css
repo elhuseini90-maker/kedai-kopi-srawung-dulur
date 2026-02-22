@@ -216,19 +216,27 @@ body {
 /* contact section */
 
 .contact .row {
-  display: flex;
-  margin-top: 2rem;
+  display: flex; /* bikin sejajar */
+  gap: 20px;
   background-color: #222;
+  align-items: stretch; /* tinggi sama */
 }
+
+/* MAP */
 .contact .row .map {
-  flex: 1 1 45rem;
+  flex: 1 1 45%;
+  min-height: 100%;
   width: 100%;
-  object-fit: cover;
+  border: none;
+  border-radius: 8px;
 }
+
+/* FORM */
 .contact .row form {
-  flex: 1 1 45rem;
-  padding: 5rem 2rem;
+  flex: 1 1 45%;
+  padding: 3rem 2rem;
   text-align: center;
+  background: #111;
 }
 .contact .row form .input-group {
   display: flex;
