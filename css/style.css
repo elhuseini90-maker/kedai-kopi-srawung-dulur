@@ -17,7 +17,8 @@ body {
   font-family: "poppins", sans-serif;
   background-color: var(--bg);
   color: #fff;
-  min-height: 5000px;
+  /* ensure content fills at least viewport height */
+  min-height: 100vh;
 }
 
 /* navbar */
@@ -56,7 +57,7 @@ body {
 .navbar .navbar-nav a::after {
   content: "";
   display: block;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
   border-bottom: 0.1rem solid var(--primary);
   transform: scaleX(0);
   transition: 0.2s linear;
@@ -73,6 +74,16 @@ body {
 }
 #hamburger-menu {
   display: none;
+}
+
+/* improve hamburger icon appearance */
+#hamburger-menu svg {
+  /* larger size and thicker stroke */
+  width: 2.5rem;
+  height: 2.5rem;
+  stroke-width: 2.5px;
+  stroke: #fff; /* keep white on dark navbar */
+  fill: none;
 }
 
 /* hero section */
@@ -205,9 +216,18 @@ body {
 }
 .menu .row .menu-card img {
   border-radius: 50%;
-  width: 200px;
-  height: 200px;
+  /* smaller default size for menu images */
+  width: 150px;
+  height: 150px;
   object-fit: cover;
+}
+
+/* ensure images shrink further on narrow screens */
+@media (max-width: 600px) {
+  .menu .row .menu-card img {
+    width: 120px;
+    height: 120px;
+  }
 }
 .menu .row .menu-card .menu-card-title {
   margin: 1rem auto 0.5rem;
@@ -228,13 +248,12 @@ body {
   min-height: 100%;
   width: 100%;
   border: none;
-  border-radius: 8px;
 }
 
 /* FORM */
 .contact .row form {
   flex: 1 1 45%;
-  padding: 3rem 2rem;
+  padding: 1rem 1rem;
   text-align: center;
   background: #111;
 }
@@ -248,7 +267,7 @@ body {
 }
 .contact .row form .input-group input {
   width: 100%;
-  padding: 2rem;
+  padding: 1rem;
   font-size: 1.7rem;
   background: none;
   color: #fff;
@@ -274,20 +293,50 @@ footer {
 .soc-container {
   display: flex;
   justify-content: center;
+  /* space below icons so links sit lower */
+  margin-bottom: 1.5rem;
+}
+
+footer .soc-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 footer .sosial {
-  padding: 1rem 0;
+  /* plain inline container for icons */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 footer .sosial a {
   color: #fff;
-  margin: 1rem;
+  text-decoration: none;
 }
+
+/* unify icon sizes */
+footer .sosial a i,
+footer .sosial a svg,
+footer .sosial a img.social-icon {
+  font-size: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  /* make sure svg/img scale to fit the circular container */
+  object-fit: contain;
+}
+
 footer .sosial a:hover {
   color: var(--bg);
+  background-color: #ffffff22;
 }
 footer .links {
+  margin-top: 1.5rem; /* push links downward relative to icons */
   margin-bottom: 1.4rem;
 }
 footer .links a {
@@ -328,8 +377,12 @@ footer .credit a {
     top: 100%;
     right: -100%;
     background-color: #fff;
-    width: 30rem;
+    /* make full width and use flex for layout */
+    width: 40%;
     height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     transition: 0.3s;
   }
   .navbar .navbar-nav.active {
@@ -337,10 +390,13 @@ footer .credit a {
   }
   .navbar .navbar-nav a {
     color: var(--bg);
-    display: block;
-    margin: 1.5rem;
+    display: inline-block;
+    /* each link takes a quarter of row so four items fit in one line */
+    width: 25%;
+    text-align: center;
+    margin: 1rem 0;
     padding: 0.5rem;
-    font: size 2rem;
+    font-size: 1.2rem;
   }
   .navbar .navbar-nav a::after {
     transform-origin: 0 0;
