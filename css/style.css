@@ -19,6 +19,14 @@ body {
   color: #fff;
   /* ensure content fills at least viewport height */
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+body > *:not(footer):not(.navbar) {
+  flex: 1;
+}
+footer {
+  flex-shrink: 0;
 }
 
 /* navbar */
@@ -409,12 +417,8 @@ footer .credit a {
     top: 100%;
     right: -100%;
     background-color: #fff;
-    /* make full width and use flex for layout */
-    width: 40%;
+    width: 30rem;
     height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
     transition: 0.3s;
   }
   .navbar .navbar-nav.active {
@@ -422,13 +426,10 @@ footer .credit a {
   }
   .navbar .navbar-nav a {
     color: var(--bg);
-    display: inline-block;
-    /* each link takes a quarter of row so four items fit in one line */
-    width: 25%;
-    text-align: center;
-    margin: 1rem 0;
+    display: block;
+    margin: 1.5rem;
     padding: 0.5rem;
-    font-size: 1.2rem;
+    font: size 2rem;
   }
   .navbar .navbar-nav a::after {
     transform-origin: 0 0;
@@ -472,3 +473,5 @@ footer .credit a {
     font-size: 45%;
   }
 }
+
+
