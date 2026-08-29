@@ -36,19 +36,19 @@ if (orderForm) {
 
     const nama = document.getElementById("nama")?.value.trim() || "-";
     const phone = document.getElementById("phone")?.value.trim() || "-";
-    const menu = document.getElementById("menu")?.value.trim() || "-";
+    const menu = document.getElementById("menuInput")?.value.trim() || "-";
     const jumlah = document.getElementById("jumlah")?.value.trim() || "-";
     const meja = document.getElementById("meja")?.value.trim() || "-";
     const catatan = document.getElementById("catatan")?.value.trim() || "-";
     const nomor = "6285336021102";
 
     const pesan =
-      "Halo Srawung Dulur, %0A%0A" +
-      `Nama: ${nama}%0A` +
-      `No. WhatsApp: ${phone}%0A` +
-      `Pesanan: ${menu}%0A` +
-      `Jumlah: ${jumlah}%0A` +
-      `Meja: ${meja}%0A` +
+      "Halo Srawung Dulur,\n\n" +
+      `Nama: ${nama}\n` +
+      `No. WhatsApp: ${phone}\n` +
+      `Pesanan: ${menu}\n` +
+      `Jumlah: ${jumlah}\n` +
+      `Meja: ${meja}\n` +
       `Catatan: ${catatan}`;
 
     window.open(`https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`, "_blank");
