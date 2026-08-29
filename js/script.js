@@ -1,51 +1,50 @@
 // toggle class active hamburger menu
-
 const navbarNav = document.querySelector(".navbar-nav");
-
-// ketika hamburger menu di klik
-
-document.querySelector("#hamburger-menu").onclick = () => {
-  navbarNav.classList.toggle("active");
-};
-
-// klik di luar sidebar untuk menghilangkan nav
-
 const hamburger = document.querySelector("#hamburger-menu");
-document.addEventListener("click", function (e) {
-  if (!hamburger.contains(e.target) && !navbarNav.contains(e.target)) {
-    navbarNav.classList.remove("active");
-  }
-});
+
+if (hamburger && navbarNav) {
+  hamburger.onclick = () => {
+    navbarNav.classList.toggle("active");
+  };
+
+  document.addEventListener("click", function (e) {
+    if (!hamburger.contains(e.target) && !navbarNav.contains(e.target)) {
+      navbarNav.classList.remove("active");
+    }
+  });
+}
 
 // toggle class active search form
-
 const searchForm = document.querySelector(".search-form");
 const searchBox = document.querySelector("#search-box");
+const searchButton = document.querySelector("#search-button");
 
-document.querySelector("#search-button").onclick = (e) => {
-  searchForm.classList.toggle("active");
-  searchBox.focus();
-  e.preventDefault();
-};
+if (searchButton && searchForm && searchBox) {
+  searchButton.onclick = (e) => {
+    searchForm.classList.toggle("active");
+    searchBox.focus();
+    e.preventDefault();
+  };
+}
 
-<script>
-document.getElementById("orderForm").addEventListener("submit", function(e) {
+// kirim order form ke WhatsApp
+const orderForm = document.getElementById("orderForm");
+
+if (orderForm) {
+  orderForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const nama = document.getElementById("nama").value;
-    const menu = document.getElementById("menu").value;
-    const jumlah = document.getElementById("jumlah").value;
-    const catatan = document.getElementById("catatan").value;
-
+    const nama = document.getElementById("nama")?.value.trim() || "-";
+    const menu = document.getElementById("menu")?.value.trim() || "-";
+    const meja = document.getElementById("meja")?.value.trim() || "-";
     const nomor = "6285336021102";
 
     const pesan =
-        `Halo Srawung-Dulur, saya ingin memesan.%0A%0A` +
-        `Nama: ${nama}%0A` +
-        `Menu: ${menu}%0A` +
-        `Jumlah: ${jumlah}%0A` +
-        `Catatan: ${catatan || "-"}`;
+      `Halo Srawung Dulur,%0A%0A` +
+      `Nama: ${nama}%0A` +
+      `Pesanan: ${menu}%0A` +
+      `Meja: ${meja}%0A`;
 
-    window.open(`https://wa.me/${"6285336021102"}?text=${pesan}`, "_blank");
-});
-</script>
+    window.open(`https://wa.me/${nomor}?text=${pesan}`, "_blank");
+  });
+}

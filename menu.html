@@ -332,20 +332,20 @@
      <h2><span>Pesan </span> Disini</h2>
       
      <div class="row">
-      <form action="">
+      <form id="orderForm">
           <div class="input-group">
             <i data-feather="user"></i>
-            <input type="text" placeholder="Nama" />
+            <input id="nama" name="nama" type="text" placeholder="Nama" required />
           </div>
 
           <div class="input-group">
             <i data-feather="list"></i>
-            <input type="text" placeholder="Pesanan" />
+            <input id="menu" name="menu" type="text" placeholder="Pesanan" required />
           </div>
 
           <div class="input-group">
             <i data-feather="flag"></i>
-            <input type="text" placeholder="Meja" />
+            <input id="meja" name="meja" type="text" placeholder="Meja" required />
           </div>
 
           <button type="submit" class="btn">Kirim pesan</button>
